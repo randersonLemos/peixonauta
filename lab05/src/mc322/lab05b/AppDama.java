@@ -71,13 +71,14 @@ public class AppDama {
 		String estados[] = new String[comandos.length+1];
 		estados[0] = tab.estadoTabuleiro();
 		
+		tab.imprimirTabuleiro();
 		for(int i=0; i<comandos.length; i++)
 		{
-			tab.imprimirTabuleiro();
 			tab.solicitaMovimento(comandos[i]);
+			tab.imprimirTabuleiro();
 			estados[i+1] = tab.estadoTabuleiro();
-
 		}
+
 		
 		String[] state = tab.exportarArquivo();
 		csv.setDataExport(caminho_sainda_csv);

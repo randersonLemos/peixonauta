@@ -9,6 +9,8 @@ public class Tabuleiro {
 	int maxCol = 8;
 	Peca matrix[][] = new Peca[maxLin][maxCol];
 	
+	boolean jogadaValida = true;
+	
 	String source = "Tabuleiro inicial";
 	String target = "";
 	
@@ -62,7 +64,8 @@ public class Tabuleiro {
 		int colF =     ((int)movimento.charAt(3) - 97); 
 		int linF = 8 - ((int)movimento.charAt(4) - 48);	
 		
-		if(verificaConsistenciaMovimento(linI, colI, linF, colF, movimento))
+		jogadaValida = verificaConsistenciaMovimento(linI, colI, linF, colF, movimento);
+		if(jogadaValida)
 		{
 			String trajeto = levantaTrajeto(linI, colI, linF, colF);
 					
@@ -71,6 +74,7 @@ public class Tabuleiro {
 			if(   (peca.getTipo() == "peao" && peca.tentaMovimento(trajeto, linF, colF)) 
 			   || (peca.getTipo() == "dama" && peca.tentaMovimento(minimizarTrajeto(trajeto), linF, colF)) )
 		   {
+				
 				source = "Source: " + movimento.charAt(0) + movimento.charAt(1);
 				target = "Target: " + movimento.charAt(3) + movimento.charAt(4);
 				
@@ -106,6 +110,10 @@ public class Tabuleiro {
 				}								
 			}			
 		}
+		else
+		{
+			jogadaValida = false;
+		}
 	}
 	
 	
@@ -114,8 +122,9 @@ public class Tabuleiro {
 		// Verifica se h� pe�a na posi��o
 		if(matrix[linI][colI] == null)
 		{
-			System.out.println("N�o h� pe�a na posi��o: " + movimento);
-			System.out.println("Estado do tabuleiro n�o atualizado");
+			//System.out.println("N�o h� pe�a na posi��o: " + movimento);
+			//System.out.println("Estado do tabuleiro n�o atualizado");
+			System.out.println("Movimento invalido!");
 			return false;
 		}
 		
@@ -124,8 +133,9 @@ public class Tabuleiro {
 		// Vetifica se o movimento vai pela diagonal
 		if(Math.abs(colF - colI) != Math.abs(linF - linI))
 		{
-			System.out.println("Apenas jogadas na diagonal s�o v�lidas: " + movimento);			
-			System.out.println("Estado do tabuleiro n�o atualizado");
+			//System.out.println("Apenas jogadas na diagonal s�o v�lidas: " + movimento);			
+			//System.out.println("Estado do tabuleiro n�o atualizado");
+			System.out.println("Movimento invalido!");
 			return false;
 		}
 		
@@ -133,14 +143,13 @@ public class Tabuleiro {
 		if(linI < 0 || colI < 0 || linI >= 8 || colI >= 8 ||
 				linF < 0 || colF < 0 || linF >= 8 || colF >= 8)
 		{			
-			System.out.println("Apenas jogadas dentro do tabuleiro s�o v�lidas: " + movimento);			
-			System.out.println("Estado do tabuleiro n�o atualizado");
+			//System.out.println("Apenas jogadas dentro do tabuleiro s�o v�lidas: " + movimento);			
+			//System.out.println("Estado do tabuleiro n�o atualizado");
+			System.out.println("Movimento invalido!");
 			return false;			
 		}				
 
 		// Verifica se h� lance obrigat�rio
-		
-		
 		String cor = peca.getCor();
 		String trajeto = levantaTrajeto(linI, colI, linF, colF);
 		String trajeto_min = minimizarTrajeto(trajeto); // Minimiza��o do trajeto
@@ -171,9 +180,10 @@ public class Tabuleiro {
 								//podera ser peao ou dama
 								if(!trajeto_min.equals(trajetos_min.substring(0,3)))
 								{
-									System.out.println("ERRO 01");
-									System.out.println("Jogada n�o permita. H� uma jogada obrigat�ria pendente :" + movimento);
-									System.out.println("Estado do tabuleiro n�o atualizado");
+									//System.out.println("ERRO 01");
+									//System.out.println("Jogada n�o permita. H� uma jogada obrigat�ria pendente :" + movimento);
+									//System.out.println("Estado do tabuleiro n�o atualizado");
+									System.out.println("Movimento invalido!");
 									return false;	
 								}									
 							}
@@ -187,9 +197,10 @@ public class Tabuleiro {
 									{
 										if(!trajeto_min.equals(trajetos_min.substring(0,4)))
 										{
-											System.out.println("ERRO 02");
-											System.out.println("Jogada n�o permita. H� uma jogada obrigat�ria pendente :" + movimento);
-											System.out.println("Estado do tabuleiro n�o atualizado");
+											//System.out.println("ERRO 02");
+											//System.out.println("Jogada n�o permita. H� uma jogada obrigat�ria pendente :" + movimento);
+											//System.out.println("Estado do tabuleiro n�o atualizado");
+											System.out.println("Movimento invalido!");
 											return false;	
 										}
 								//Somente estamos verificando op��es de tomar pecas, tanto faz quem esteja tomando
@@ -370,67 +381,83 @@ public class Tabuleiro {
 	
 	void imprimirTabuleiro()
 	{
-		String estados = "";
-		
-		estados = imprimirCabecalho(estados);
-		
-		for(int i=0; i<maxLin+1; i++)
+		if(jogadaValida)
 		{
-			for(int j=-1; j<maxCol; j++)
+			String estados = "";
+			
+			estados = imprimirCabecalho(estados);
+			
+			for(int i=0; i<maxLin+1; i++)
 			{
-				if(i >= 0 && j >= 0 && i < maxLin && j < maxCol)
+				for(int j=-1; j<maxCol; j++)
 				{
-					estados += estadoDaPosicao(i,j);
-					estados += " ";
+					if(i >= 0 && j >= 0 && i < maxLin && j < maxCol)
+					{
+						estados += estadoDaPosicao(i,j);
+						estados += " ";
+					}
+					if(i == maxLin && j != -1)
+					{
+						estados += String.valueOf((char)(j + 97));
+						estados += " ";
+					}
+					if(i != maxLin && j == -1)
+					{
+						estados += (maxLin - i);
+						estados += " ";
+					}
+					if(i == maxLin && j == -1)
+					{
+						estados += " ";
+						estados += " ";
+					}
 				}
-				if(i == maxLin && j != -1)
-				{
-					estados += String.valueOf((char)(j + 97));
-					estados += " ";
-				}
-				if(i != maxLin && j == -1)
-				{
-					estados += (maxLin - i);
-					estados += " ";
-				}
-				if(i == maxLin && j == -1)
-				{
-					estados += " ";
-					estados += " ";
-				}
+				estados += "\n";
 			}
-			estados += "\n";
+			//return estados.strip();
+			System.out.println(estados);
 		}
-		//return estados.strip();
-		System.out.println(estados);
+		else
+		{
+			System.out.println();
+		}
 	}
 	
 	
 	String[] exportarArquivo()
 	{
-		String[] state = new String[64];
-		int contador = 0;
-		String col;
-		String lin;
-		
-		for(int j=0; j<maxCol; j++)
+		if(jogadaValida)
 		{
-			for(int i=maxLin-1; i>=0; i--)
+			String[] state = new String[64];
+			int contador = 0;
+			String col;
+			String lin;
+			
+			for(int j=0; j<maxCol; j++)
 			{
-				col = (char)(j+97) + "";
-				lin = 8-i + "";
-				
-				if(matrix[i][j] != null)
-					state[contador] = col + lin + matrix[i][j].simb;
-				else
-					state[contador] = col + lin + "_";
-				contador++;
-			}
+				for(int i=maxLin-1; i>=0; i--)
+				{
+					col = (char)(j+97) + "";
+					lin = 8-i + "";
+					
+					if(matrix[i][j] != null)
+						state[contador] = col + lin + matrix[i][j].simb;
+					else
+						state[contador] = col + lin + "_";
+					contador++;
+				}
+			}	
+			return state;
+		}
+		else
+		{
+			String[] state = new String[1];
+			state[0] = "erro";
+			return state;
 		}
 		//for(int a=0; a<64; a++)
-		//	System.out.println(a + " " + state[a]);		
-		return state;
- 	}	
+		//	System.out.println(a + " " + state[a]);	
+	}	
 	
 	
 	String estadoTabuleiro()

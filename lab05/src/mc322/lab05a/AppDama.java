@@ -26,7 +26,7 @@ public class AppDama {
 	}
 
 	public static void main(String[] args) {		
-		executaJogo("./comandos.csv");	
+		executaJogo("./entrada.csv");	
 
 	}
 
