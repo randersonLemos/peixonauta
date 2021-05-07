@@ -57,15 +57,15 @@ public class CSVHandling {
 			commands = new String[16][];
 			while (line != null) {
 				commands[i] = line.split(",");
-					line = file.readLine();
-					i++;
-				}
-				file.close();
-			} catch (IOException erro) {
-				erro.printStackTrace();
+				line = file.readLine();
+				i++;
 			}
+			file.close();
+		} catch (IOException erro) {
+			erro.printStackTrace();
 		}
-		
+	}
+	
 	private void writeCSV(){
 		try {
 			PrintWriter fileExport = new PrintWriter(new FileWriter(dataExport, true));
