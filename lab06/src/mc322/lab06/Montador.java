@@ -2,6 +2,7 @@ package mc322.lab06;
 
 public class Montador {
 	Caverna cav = null;
+	Componente heroi = null;
 	
 	Montador(String caminho_arquivo_csv)
 	{
@@ -9,77 +10,95 @@ public class Montador {
 		
 		csv.setDataSource(caminho_arquivo_csv);		
 		
-		String[][] comandos = csv.requestCommands();
+		String[][] comandos = csv.requestCommands();		
 		
 		cav = new Caverna();
 		
-		for(int i=0; i<comandos.length; i++) 
+		int n_ouro = 0;
+		int n_heroi = 0;		
+		int n_wumpus = 0;
+		int n_buraco = 0;
+		boolean simbolo_desconhecido = false;
+		
+		for(int i=0; i<comandos.length; i++)
 		{
-			int lin = Integer.parseInt(comandos[i][0].substring(0, 1)) - 1;
-			int col = Integer.parseInt(comandos[i][0].substring(2, 3)) - 1;
 			String sim = comandos[i][1];
-		
-			Componente componente = null;
-		
 			if(sim.equals("P"))
-				componente = new Heroi(lin, col);				
+				n_heroi += 1;
 			
 			else if(sim.equals("W"))
-				componente = new Wumpus(lin, col);
+				n_wumpus += 1;
 
-			
 			else if(sim.equals("B"))
-				componente = new Buraco(lin, col);
+				n_buraco += 1;
 			
 			else if(sim.equals("O"))
-				componente = new Ouro(lin, col);
+				n_ouro += 1;
 			
 			else if(sim.equals("_"))
-				componente = new Componente(lin, col); // Nao faz nada		
+			{} // Nao faz nada
 			
 			else
-				System.out.println("Simbolo desconhecido: " + sim);
-
-			cav.adicionaComponente(componente);		
-			
-			if(componente.getSim().equals("W"))
-			{		
-				componente = new Fedor(lin + 1 , col);
-				cav.tentaAdicionarComponenteSecundario(componente);
-				
-				componente = new Fedor(lin - 1, col);
-				cav.tentaAdicionarComponenteSecundario(componente);
-
-				componente = new Fedor(lin, col + 1);
-				cav.tentaAdicionarComponenteSecundario(componente);
-
-				componente = new Fedor(lin, col - 1);		
-				cav.tentaAdicionarComponenteSecundario(componente);
+			{
+				simbolo_desconhecido = true;
+				break;
 			}
-			
-			if(componente.getSim().equals("B"))
-			{		
-				componente = new Brisa(lin + 1 , col);
-				cav.tentaAdicionarComponenteSecundario(componente);
-				
-				componente = new Brisa(lin - 1, col);
-				cav.tentaAdicionarComponenteSecundario(componente);
-
-				componente = new Brisa(lin, col + 1);
-				cav.tentaAdicionarComponenteSecundario(componente);
-
-				componente = new Brisa(lin, col - 1);		
-				cav.tentaAdicionarComponenteSecundario(componente);
-			}			
 		}
-	}		
 		
-
+		if((n_heroi == 1) && (n_wumpus == 1) && (n_ouro == 1) && (n_buraco >= 2) && (n_buraco <= 3) && (!simbolo_desconhecido))
+		{
+			for(int i=0; i<comandos.length; i++) 
+			{
+				int lin = Integer.parseInt(comandos[i][0].substring(0, 1)) - 1;
+				int col = Integer.parseInt(comandos[i][0].substring(2, 3)) - 1;
+				String sim = comandos[i][1];
+			
+				Componente componente = null;
+			
+				if(sim.equals("P"))
+				{
+					componente = new Heroi(lin, col, cav);		
+					heroi = componente;
+				}
+				
+				else if(sim.equals("W"))
+					componente = new Wumpus(lin, col, cav);
+				
+				else if(sim.equals("B"))
+					componente = new Buraco(lin, col, cav);
+				
+				else if(sim.equals("O"))
+					componente = new Ouro(lin, col, cav);
+				
+				else
+					componente = new Componente(lin, col, cav); // Nao faz nada		
+				
+				cav.adicionaComponente(componente);			
+			}
+		}
+		
+		else if(n_heroi != 1)
+			System.out.println("Maximo de 1 heroi permitido");
+		
+		else if(n_wumpus != 1)
+			System.out.println("Maximo de 1 Wumpus permitido");
+		
+		else if(n_ouro != 1)
+			System.out.println("Maximo de 1 ouro permitido");
+		
+		else if( (n_buraco < 2) && (n_buraco > 3) )
+			System.out.println("Minimo de 2 buracos e maximo de 3 buracos permitidos");
+		
+		else if(simbolo_desconhecido)
+			System.out.println("Simbolo desconhecido: " + simbolo_desconhecido);
+		
+		else
+			System.out.println("Verificação com BUG");
+	}	
 	
-	public static void main(String args[])
+	
+	Componente getHeroi()
 	{
-		Montador mon = new Montador("./entrada.csv");
-		
-		mon.cav.verEstadosCaverna();
+		return heroi;
 	}
 }

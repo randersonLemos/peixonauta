@@ -24,9 +24,9 @@ public class Caverna {
 			Sala sala = matrix[lin][col];
 			sala.adicionaComponente(componente);
 			
-			//if(componente.getSim().equals("P"))
-			//	sala.foiVisitada();
-			sala.foiVisitada();
+			if(componente.getSim().equals("P"))
+				sala.foiVisitada();
+			//sala.foiVisitada();
 		}
 	}
 	
@@ -44,8 +44,6 @@ public class Caverna {
 				sala.adicionaComponente(componente);
 			}
 		}
-		
-
 	}
 		
 	void verEstadosCaverna()
