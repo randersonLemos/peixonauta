@@ -26,7 +26,7 @@ public class Caverna {
 			
 			if(componente.getSim().equals("P"))
 				sala.foiVisitada();
-			//sala.foiVisitada();
+			sala.foiVisitada();
 		}
 	}
 	
@@ -44,6 +44,14 @@ public class Caverna {
 				sala.adicionaComponente(componente);
 			}
 		}
+	}
+	
+	
+	void atualizarCaverna() {
+		//Atualizar a posição do heroi
+		//Revelar a sala
+		
+		//metodo foiVisitada ta no GameControl, mas acho q pode ser passada pra cá
 	}
 		
 	void verEstadosCaverna()
@@ -64,4 +72,5 @@ public class Caverna {
 			System.out.print("\n");
 		}
 	}
+	
 }

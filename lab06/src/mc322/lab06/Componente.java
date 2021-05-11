@@ -18,17 +18,6 @@ public class Componente {
 	{
 		return sim;
 	}
-	
 
-	
-	/*-componentes:
-		Player
-		Wumpus
-		Ouro
-		Buraco
-		Brisa
-		Fedor
-	*/
-	//criar cada classe separadamente, essa classe ser� herdeira
 
 }

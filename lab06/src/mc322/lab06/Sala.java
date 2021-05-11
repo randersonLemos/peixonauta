@@ -60,8 +60,8 @@ public class Sala {
 				return fedor.sim;
 			
 			else if(brisa != null)
-				
 				return brisa.sim;
+			
 			else
 				return "#";				
 		}
@@ -103,5 +103,6 @@ public class Sala {
 			return true;
 	return false;
 	}
+	
 	
 }
