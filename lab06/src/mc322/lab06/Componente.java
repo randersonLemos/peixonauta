@@ -7,6 +7,10 @@ public class Componente {
 	int lin = -1;
 	int col = -1;
 	
+	private int arrow;
+	private int gold;
+	
+	
 	Componente(int lin, int col, Caverna cav)
 	{
 		this.lin = lin;

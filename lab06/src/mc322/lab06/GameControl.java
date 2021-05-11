@@ -33,16 +33,27 @@ public class GameControl {
 			System.out.println();
 			
 			
+			int lin = heroi.lin;
+			int col = heroi.col;
 			
-			if(comando == "w")
-				heroi.lin--;
-			
-			else if(comando == "s")
-				heroi.lin++;
-			else if(comando == "d")
+			if(comando == "w") {
+				lin--; //posicao final
+				//heroi.cav.atualizarCaverna(heroi.lin, heroi.col, lin, col);
+			}
+			else if(comando == "s") {
+				lin++;
+				heroi.cav.atualizarCaverna(heroi.lin, heroi.col, lin, col);
+			}
+			else if(comando == "d") {
 				heroi.col++;
-			else if(comando == "a")
+				//heroi.cav.atualizarCaverna();
+			}
+			else if(comando == "a") {
 				heroi.col--;
+				//heroi.cav.atualizarCaverna();
+			}
+			
+			
 			
 			//caso ocorra um dos 4 -> -15 pontos
 			
@@ -54,7 +65,8 @@ public class GameControl {
 				
 			}
 			else if(comando == "c") {
-				Sala sala = new Sala(heroi.lin, heroi.col);
+				Sala sala = heroi.cav.getSala(heroi.lin, heroi.col);
+				
 				if(sala.temOuro())
 				{// heroi.gold = 1
 				}
@@ -82,7 +94,7 @@ public class GameControl {
 			
 			sala.foiVisitada();	
 			
-			heroi.cav.atualizarCaverna();
+			
 			
 		}
 		

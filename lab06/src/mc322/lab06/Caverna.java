@@ -47,7 +47,13 @@ public class Caverna {
 	}
 	
 	
-	void atualizarCaverna() {
+	void atualizarCaverna(int lin_ant, int col_ant, int lin_nov, int col_nov) {
+		Sala sala = matrix[lin_ant][col_ant];
+		Componente heroi = sala.heroi;
+		sala.heroi = null;
+		sala  = matrix[lin_nov][col_nov];
+		sala.heroi = heroi;
+		sala.foiVisitada();
 		//Atualizar a posição do heroi
 		//Revelar a sala
 		
@@ -73,4 +79,7 @@ public class Caverna {
 		}
 	}
 	
+	Sala getSala(int lin, int col) {
+		return matrix[lin][col];
+	}
 }
