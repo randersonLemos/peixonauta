@@ -2,7 +2,7 @@ package mc322.lab06;
 
 public class Montador {
 	Caverna cav = null;
-	Heroi heroi = null;
+	Componente heroi = null;
 	
 	Montador(String caminho_arquivo_csv)
 	{
@@ -57,7 +57,8 @@ public class Montador {
 			
 				if(sim.equals("P"))
 				{
-					heroi = new Heroi(lin, col, cav);		
+					componente = new Heroi(lin, col, cav);	
+					heroi = componente;
 				}
 				
 				else if(sim.equals("W"))
@@ -92,7 +93,7 @@ public class Montador {
 			System.out.println("Simbolo desconhecido: " + simbolo_desconhecido);
 		
 		else
-			System.out.println("Verificação com BUG");
+			System.out.println("Verificaï¿½ï¿½o com BUG");
 	}	
 	
 	

@@ -24,9 +24,9 @@ public class Caverna {
 			Sala sala = matrix[lin][col];
 			sala.adicionaComponente(componente);
 			
-			if(componente.getSim().equals("P"))
-				sala.foiVisitada();
-			sala.foiVisitada();
+			if(componente.getSim().equals("P"))	
+				sala.foiVisitada();			
+			//sala.foiVisitada();
 		}
 	}
 	
@@ -47,17 +47,20 @@ public class Caverna {
 	}
 	
 	
-	void atualizarCaverna(int lin_ant, int col_ant, int lin_nov, int col_nov) {
+	void atualizaSalaDoHeroiNaCaverna(int lin_ant, int col_ant, int lin_nov, int col_nov) {
+		
+		//System.out.println("Sala: " + lin_ant + " " + col_ant);
+
 		Sala sala = matrix[lin_ant][col_ant];
 		Componente heroi = sala.heroi;
 		sala.heroi = null;
-		sala  = matrix[lin_nov][col_nov];
+		
+		heroi.lin = lin_nov;
+		heroi.col = col_nov;
+		
+		sala = matrix[lin_nov][col_nov];
 		sala.heroi = heroi;
 		sala.foiVisitada();
-		//Atualizar a posição do heroi
-		//Revelar a sala
-		
-		//metodo foiVisitada ta no GameControl, mas acho q pode ser passada pra cá
 	}
 		
 	void verEstadosCaverna()

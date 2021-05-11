@@ -33,24 +33,48 @@ public class GameControl {
 			System.out.println();
 			
 			
-			int lin = heroi.lin;
-			int col = heroi.col;
+			int lin_ant = heroi.lin;
+			int col_ant = heroi.col;
 			
-			if(comando == "w") {
-				lin--; //posicao final
-				//heroi.cav.atualizarCaverna(heroi.lin, heroi.col, lin, col);
+			//System.out.println("Hero: " + heroi.lin +" "+ heroi.col);
+			//System.out.println("Hero: " + lin_ant +" "+ col_ant);
+
+			
+			if(comando.equals("w")) 
+			{
+				int lin_nov = lin_ant - 1;
+				int col_nov = col_ant;
+				if(lin_nov >= 0 && lin_nov < 4 && col_nov >= 0 && col_nov < 4) {					
+					heroi.cav.atualizaSalaDoHeroiNaCaverna(lin_ant, col_ant, lin_nov, col_nov);
+				}
 			}
-			else if(comando == "s") {
-				lin++;
-				heroi.cav.atualizarCaverna(heroi.lin, heroi.col, lin, col);
+			else if(comando.equals("s"))
+			{
+				int lin_nov = lin_ant + 1;
+				int col_nov = col_ant;
+				if(lin_nov >= 0 && lin_nov < 4 && col_nov >= 0 && col_nov < 4) {				
+					heroi.cav.atualizaSalaDoHeroiNaCaverna(lin_ant, col_ant, lin_nov, col_nov);
+				}
 			}
-			else if(comando == "d") {
-				heroi.col++;
-				//heroi.cav.atualizarCaverna();
+			else if(comando.equals("d"))
+			{
+				int lin_nov = lin_ant;
+				int col_nov = col_ant + 1;
+				if(lin_nov >= 0 && lin_nov < 4 && col_nov >= 0 && col_nov < 4) {				
+					heroi.cav.atualizaSalaDoHeroiNaCaverna(lin_ant, col_ant, lin_nov, col_nov);
+				}
 			}
-			else if(comando == "a") {
-				heroi.col--;
-				//heroi.cav.atualizarCaverna();
+			else if(comando.equals("a")) 
+			{
+				int lin_nov = lin_ant;
+				int col_nov = col_ant - 1;
+				if(lin_nov >= 0 && lin_nov < 4 && col_nov >= 0 && col_nov < 4) {			
+					heroi.cav.atualizaSalaDoHeroiNaCaverna(lin_ant, col_ant, lin_nov, col_nov);
+				}
+			}
+			else 
+			{
+				System.out.println("Comando nÃ£o mapeado: " + comando);
 			}
 			
 			
@@ -59,40 +83,40 @@ public class GameControl {
 			
 			
 			
-			else if(comando == "k") {
+			//else if(comando == "k") {
 				//heroi.arrow = 2 "equipar flecha"
 				//deve necessariamente se tornar 0 na proxima rodada
 				
-			}
-			else if(comando == "c") {
-				Sala sala = heroi.cav.getSala(heroi.lin, heroi.col);
-				
-				if(sala.temOuro())
-				{// heroi.gold = 1
-				}
-			}
+			//}
+			//else if(comando == "c") {
+			//	Sala sala = heroi.cav.getSala(heroi.lin, heroi.col);
+			//	
+			//	if(sala.temOuro())
+			//	{// heroi.gold = 1
+			//	}
+			//}
 			
 		
-			//condições de derrota
-			Sala sala = new Sala(heroi.lin, heroi.col);
-			if(sala.temBuraco()) {
-				System.out.println("Buraco!!! Voce perdeu");
+			//condiï¿½ï¿½es de derrota
+			//Sala sala = new Sala(heroi.lin, heroi.col);
+			//if(sala.temBuraco()) {
+			//	System.out.println("Buraco!!! Voce perdeu");
 				//-1000
-				break;
-			}
-			else if(sala.temWumpus()) {
+		//		break;
+		//	}
+		//	else if(sala.temWumpus()) {
 				//Se tem arco -> luta 50% -> se ganhar? mata wumpus e +500
 				
 				//caso contraio perde -> -1000 e tem q dar break
-			}
+		//	}
 			
-			//condições de vitoria
-			if(heroi.lin == 0 && heroi.col == 0) {
+			//condiï¿½ï¿½es de vitoria
+		//	if(heroi.lin == 0 && heroi.col == 0) {
 				//se tiver ouro -> ganha -> +1000 -> break
 				//continua
-			}
+		//	}
 			
-			sala.foiVisitada();	
+		//	sala.foiVisitada();	
 			
 			
 			
