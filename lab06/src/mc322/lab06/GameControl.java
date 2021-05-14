@@ -165,6 +165,11 @@ public class GameControl {
 					System.out.println("Voce encontrou o ouro, aperte c para captura-lo");
 			}
 		}
+		if(!comando.equals("q")) {
+			heroi.cav.verEstadosCaverna();
+			System.out.println("Player: " + nome);
+			System.out.println("Score: " + score + "\n");
+		}
 		keyboard.close();
 		System.out.println("FIM DE JOGO!!!\n");
 	}
