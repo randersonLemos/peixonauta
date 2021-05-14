@@ -93,7 +93,7 @@ public class Montador {
 			System.out.println("Simbolo desconhecido: " + simbolo_desconhecido);
 		
 		else
-			System.out.println("Verifica��o com BUG");
+			System.out.println("Verificao com BUG");
 	}	
 	
 	

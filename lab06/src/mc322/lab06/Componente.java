@@ -7,9 +7,6 @@ public class Componente {
 	int lin = -1;
 	int col = -1;
 	
-	private int arrow;
-	private int gold;
-	
 	
 	Componente(int lin, int col, Caverna cav)
 	{
@@ -23,5 +20,11 @@ public class Componente {
 		return sim;
 	}
 
-
+	public void changeArrow (int x) {} 
+	
+	public void changeGold (int x) {}
+	
+	public int getArrow() {return 0;}
+	
+	public int getGold() {return 0;}
 }

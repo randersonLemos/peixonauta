@@ -104,5 +104,18 @@ public class Sala {
 	return false;
 	}
 	
+	boolean temBrisa()
+	{
+		if(brisa != null)
+			return true;
+	return false;
+	}
+	
+	boolean temFedor()
+	{
+		if(fedor != null)
+			return true;
+	return false;
+	}
 	
 }

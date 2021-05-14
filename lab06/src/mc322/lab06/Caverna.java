@@ -62,6 +62,16 @@ public class Caverna {
 		sala.heroi = heroi;
 		sala.foiVisitada();
 	}
+	
+	void retiraOuroDaSala(int lin_atual, int col_atual) {
+		Sala sala = matrix[lin_atual][col_atual];
+		sala.ouro = null;
+	}
+	
+	void atualizaSalaQuandoWumpuesEMorto(int lin_atual, int col_atual) {
+		Sala sala = matrix[lin_atual][col_atual];
+		sala.wumpus = null;
+	}
 		
 	void verEstadosCaverna()
 	{		
