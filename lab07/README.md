@@ -1,7 +1,7 @@
 # Lab07 - Corridinha da Massa (Projeto Final)
 
-# Apresentação 
+# Arquivo da apresentação 
 [apresentação](./odp)
 
-# Vídeo
-[vídeo](./mp4)
+# Link para o vídeo
+[vídeo](https://www.youtube.com/watch?v=wtWPpYuzdb8)
