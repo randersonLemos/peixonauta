@@ -34,6 +34,12 @@ public class CircuitoVisual implements ICircuitoVisual{
 		}
 	}
 	
+	public void construirJanela(int maxLin, int maxCol)
+	{
+		janela.construirMatrizJLabel(maxLin, maxCol);
+		janela.mostrarJanela();
+	}
+	
 	public void atualizarJanela()
 	{	
 		if(icirc != null)
@@ -45,9 +51,10 @@ public class CircuitoVisual implements ICircuitoVisual{
 				for(int col=0; col<maxCol; col++)
 				{
 					ImageIcon imagem = icirc.getElemento(lin, col).getImageIcon();
-					janela.atualizar(imagem, lin, col);
+					janela.atualizarImagem(imagem, lin, col);
 				}
 			}
+			janela.atualizar();
 		}		
 	}
 }

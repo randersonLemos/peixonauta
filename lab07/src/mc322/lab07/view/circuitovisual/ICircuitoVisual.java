@@ -6,4 +6,5 @@ public interface ICircuitoVisual extends
 {
 	public void imprimirCircuitoNoConsole();	
 	public void atualizarJanela();
+	public void construirJanela(int maxLin, int maxCol);
 }

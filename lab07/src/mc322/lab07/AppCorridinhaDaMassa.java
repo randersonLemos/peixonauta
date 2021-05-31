@@ -24,21 +24,20 @@ public class AppCorridinhaDaMassa {
 		icons.carregarCircuito(maxLin, maxCol);
 		
 		ICircuitoVisual icircVisu = new CircuitoVisual();
+		icircVisu.construirJanela(maxLin, maxCol);
 		icircVisu.conectar(icirc);
 		icont.conectar(icirc);
 
-		
-		icircVisu.imprimirCircuitoNoConsole();
-		System.out.println();
+		//icircVisu.imprimirCircuitoNoConsole();
+		//System.out.println();
 		icircVisu.atualizarJanela();
 
-		for(int i=0; i<10; i++)
+		for(int i=0; i<1000; i++)
 		{		
 			icont.avancarElementosUmaLinhaNoCircuito();
-			System.out.println();
-			icircVisu.atualizarJanela();
-			//times.esperar(1 segundo);
-			
+			//icircVisu.imprimirCircuitoNoConsole();
+			//System.out.println();
+		    icircVisu.atualizarJanela();					
 		}
 			//IConstrutorApp icons = new Construtor();
 		//icons.conectar(circuito);

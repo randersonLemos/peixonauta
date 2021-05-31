@@ -9,7 +9,7 @@ public class Circuito implements ICircuito{
 	
 	public void construirMatrizCircuito(int maxLin, int maxCol)
 	{
-		matriz = new Elemento [maxLin][maxCol];
+		matriz = new Elemento[maxLin][maxCol];
 		this.maxLin = maxLin;
 		this.maxCol = maxCol;
 		
