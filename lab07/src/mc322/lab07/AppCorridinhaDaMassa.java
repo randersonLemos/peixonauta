@@ -9,6 +9,9 @@ import mc322.lab07.model.circuito.ICircuito;
 import mc322.lab07.view.circuitovisual.CircuitoVisual;
 import mc322.lab07.view.circuitovisual.ICircuitoVisual;
 
+import java.util.Timer;
+import java.util.TimerTask;
+
 public class AppCorridinhaDaMassa {
 	public static void main(String args[])
 	{		
@@ -32,13 +35,29 @@ public class AppCorridinhaDaMassa {
 		//System.out.println();
 		icircVisu.atualizarJanela();
 
-		for(int i=0; i<1000; i++)
-		{		
+		final long Segundos = (40); //numero inteiro em segundos
+		
+		/*
+		Conversão:
+		Segundos -> ms/frame
+		x fps -> (1000/x) ms/frame 
+		*/
+		Timer tempo = new Timer();
+		TimerTask tarefa = new TimerTask() {		
+			int contador = 500;
+			@Override
+			public void run() {
 			icont.avancarElementosUmaLinhaNoCircuito();
 			//icircVisu.imprimirCircuitoNoConsole();
 			//System.out.println();
-		    icircVisu.atualizarJanela();					
-		}
+		    icircVisu.atualizarJanela();
+		    contador--;
+		    if(contador == 0)
+		    	tempo.cancel();
+		    	tempo.purge();
+			}
+		};
+		tempo.scheduleAtFixedRate(tarefa, Segundos, Segundos);
 			//IConstrutorApp icons = new Construtor();
 		//icons.conectar(circuito);
 		//icons.conectar(controle);

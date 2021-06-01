@@ -33,8 +33,8 @@ public class CircuitoVisualJanela extends JFrame{
 		c = new GridBagConstraints();
 		
         //c.fill = GridBagConstraints.BOTH;
-        //c.weightx = 0.1;
-        //c.weighty = 0.1;
+        //c.weightx = 0;
+        //c.weighty = 0;
 				
 		//setVisible(true);	
 	}

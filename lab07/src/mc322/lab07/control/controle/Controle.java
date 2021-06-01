@@ -11,8 +11,8 @@ import mc322.lab07.model.elemento.Livre;
 import mc322.lab07.model.elemento.Muralha;
 
 public class Controle implements IControle{	
-	private static int limiteSuperiorNumeroSorteado = 15;
-	private static int valoresLimiteElementosSemPiloto[] = new int[]{ 10, 2, 1, 1, 1 }; // livre, muralha, fogo, cafe, bebida
+	private static int limiteSuperiorNumeroSorteado = 100;
+	private static int valoresLimiteElementosSemPiloto[] = new int[]{ 90, 7, 1, 1, 1 }; // livre, muralha, fogo, cafe, bebida
 	private static Random random = new Random();
 
 	ICircuitoControle icirc = null;
