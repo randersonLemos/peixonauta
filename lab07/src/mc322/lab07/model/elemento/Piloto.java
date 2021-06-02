@@ -14,5 +14,10 @@ public class Piloto extends Elemento implements IPiloto{
 		setImageIcon("./textura/piloto_1.gif");
 	}
 	
+	public void setPosicao(int lin, int col)
+	{
+		this.setLin(lin);
+		this.setCol(col);
+	}
 	
 }

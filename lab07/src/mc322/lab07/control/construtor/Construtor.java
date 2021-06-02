@@ -28,7 +28,7 @@ public class Construtor implements IConstrutor{
 	}
 
 	
-	public void carregarCircuito(int maxLin, int maxCol)
+	public void carregar(int maxLin, int maxCol)
 	{	
 		icirc.construirMatrizCircuito(maxLin, maxCol);		
 		
@@ -46,6 +46,7 @@ public class Construtor implements IConstrutor{
 					icirc.setElemento(new Livre(lin, col));
 				}
 			}
-		}				
+		}	
+		ipilo.setPosicao(maxLin, maxCol/2);
 	}
 }

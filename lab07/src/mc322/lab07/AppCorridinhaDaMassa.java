@@ -37,7 +37,7 @@ public class AppCorridinhaDaMassa {
 		
 		int maxLin = 18;
 		int maxCol = 15;
-		icons.carregarCircuito(maxLin, maxCol);
+		icons.carregar(maxLin, maxCol);
 		icircVisu.construirJanela(maxLin, maxCol);
 		icircVisu.atualizarJanela();
 

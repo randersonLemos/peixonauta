@@ -5,6 +5,6 @@ public interface IConstrutor extends
 , IRControleConstrutor
 , IRPilotoConstrutor
 {
-	public void carregarCircuito(int maxLin, int maxCol);
+	public void carregar(int maxLin, int maxCol);
 }
 
