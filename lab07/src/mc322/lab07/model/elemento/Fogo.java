@@ -5,6 +5,6 @@ public class Fogo extends Elemento{
 	{
 		super(lin, col);
 		setSimbolo("F");
-		setImageIcon("./textura/fogo_1.png");
+		setImageIcon("./textura/fogo_10.gif");
 	}
 }

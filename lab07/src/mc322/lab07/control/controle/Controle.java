@@ -1,14 +1,19 @@
 package mc322.lab07.control.controle;
 
 import java.util.Random;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import mc322.lab07.model.circuito.ICircuitoControle;
 import mc322.lab07.model.elemento.Bebida;
 import mc322.lab07.model.elemento.Cafe;
 import mc322.lab07.model.elemento.Elemento;
 import mc322.lab07.model.elemento.Fogo;
+import mc322.lab07.model.elemento.IPilotoControle;
 import mc322.lab07.model.elemento.Livre;
 import mc322.lab07.model.elemento.Muralha;
+import mc322.lab07.view.circuitovisual.ICircuitoVisualControle;
+import mc322.lab07.view.pilotovisual.IPilotoVisualControle;
 
 public class Controle implements IControle{	
 	private static int limiteSuperiorNumeroSorteado = 100;
@@ -16,10 +21,28 @@ public class Controle implements IControle{
 	private static Random random = new Random();
 
 	ICircuitoControle icirc = null;
+	ICircuitoVisualControle icvisu = null;
+	IPilotoControle ipilo = null;
+	IPilotoVisualControle ipvisu = null;
 	
 	public void conectar(ICircuitoControle icircCont)
 	{
 		this.icirc = icircCont;
+	}
+	
+	public void conectar(ICircuitoVisualControle icvisuCont)
+	{
+		this.icvisu = icvisuCont;
+	}
+	
+	public void conectar(IPilotoControle ipiloCont)
+	{
+		this.ipilo = ipiloCont;
+	}
+	
+	public void conectar(IPilotoVisualControle ipiloVisu)
+	{
+		this.ipvisu = ipiloVisu;
 	}
 	
 	public Elemento geradorAleatorioDeElementosSemPiloto(int lin, int col)
@@ -77,6 +100,29 @@ public class Controle implements IControle{
 			Elemento elem = geradorAleatorioDeElementosSemPiloto(0, col);
 			icirc.setElemento(elem);
 		}
-
+	}
+	
+	public void comecarJogo()
+	{
+		final long Segundos = (1000); //numero inteiro em segundos
+		/*
+		Conversao:
+		Segundos -> ms/frame
+		x fps -> (1000/x) ms/frame 
+		*/
+		Timer tempo = new Timer();
+		TimerTask tarefa = new TimerTask() {		
+			int contador = 500;
+			@Override
+			public void run() {
+			avancarElementosUmaLinhaNoCircuito();
+		    icvisu.atualizarJanela();
+		    contador--;
+		    if(contador == 0)
+		    	tempo.cancel();
+		    	tempo.purge();
+			}
+		};
+		tempo.scheduleAtFixedRate(tarefa, Segundos, Segundos);	
 	}
 }

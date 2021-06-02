@@ -1,10 +1,6 @@
 package mc322.lab07.view.circuitovisual;
 
-import java.awt.Image;
-
 import javax.swing.ImageIcon;
-import javax.swing.JLabel;
-import javax.swing.SwingUtilities;
 
 import mc322.lab07.model.circuito.ICircuitoCircuitoVisual;
 

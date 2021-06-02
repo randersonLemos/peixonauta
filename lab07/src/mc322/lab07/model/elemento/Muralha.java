@@ -5,6 +5,6 @@ public class Muralha extends Elemento{
 	{
 		super(lin, col);
 		setSimbolo("M");	
-		setImageIcon("./textura/muralha_1.png");
+		setImageIcon("./textura/muralha_3.png");
 	}
 }

@@ -6,71 +6,41 @@ import mc322.lab07.control.controle.Controle;
 import mc322.lab07.control.controle.IControle;
 import mc322.lab07.model.circuito.Circuito;
 import mc322.lab07.model.circuito.ICircuito;
+import mc322.lab07.model.elemento.IPiloto;
+import mc322.lab07.model.elemento.Piloto;
 import mc322.lab07.view.circuitovisual.CircuitoVisual;
 import mc322.lab07.view.circuitovisual.ICircuitoVisual;
-
-import java.util.Timer;
-import java.util.TimerTask;
+import mc322.lab07.view.pilotovisual.IPilotoVisual;
+import mc322.lab07.view.pilotovisual.PilotoVisual;
 
 public class AppCorridinhaDaMassa {
 	public static void main(String args[])
 	{		
+		IPiloto ipilo = new Piloto();
 		ICircuito icirc = new Circuito();
 		IControle icont = new Controle();
-		
 		IConstrutor icons = new Construtor();
+		ICircuitoVisual icircVisu = new CircuitoVisual();	
+		IPilotoVisual ipiloVisu = new PilotoVisual();
+		
+		icons.conectar(ipilo);
 		icons.conectar(icirc);
 		icons.conectar(icont);
+	
+		icircVisu.conectar(icirc);
+		ipiloVisu.conectar(ipilo);
+		
+		icont.conectar(ipilo);
+		icont.conectar(icirc);
+		icont.conectar(icircVisu);
+		icont.conectar(ipiloVisu);
 		
 		int maxLin = 18;
 		int maxCol = 15;
 		icons.carregarCircuito(maxLin, maxCol);
-		
-		ICircuitoVisual icircVisu = new CircuitoVisual();
 		icircVisu.construirJanela(maxLin, maxCol);
-		icircVisu.conectar(icirc);
-		icont.conectar(icirc);
-
-		//icircVisu.imprimirCircuitoNoConsole();
-		//System.out.println();
 		icircVisu.atualizarJanela();
 
-		final long Segundos = (40); //numero inteiro em segundos
-		
-		/*
-		Conversão:
-		Segundos -> ms/frame
-		x fps -> (1000/x) ms/frame 
-		*/
-		Timer tempo = new Timer();
-		TimerTask tarefa = new TimerTask() {		
-			int contador = 500;
-			@Override
-			public void run() {
-			icont.avancarElementosUmaLinhaNoCircuito();
-			//icircVisu.imprimirCircuitoNoConsole();
-			//System.out.println();
-		    icircVisu.atualizarJanela();
-		    contador--;
-		    if(contador == 0)
-		    	tempo.cancel();
-		    	tempo.purge();
-			}
-		};
-		tempo.scheduleAtFixedRate(tarefa, Segundos, Segundos);
-			//IConstrutorApp icons = new Construtor();
-		//icons.conectar(circuito);
-		//icons.conectar(controle);
-		//icons.conectar(circuitoVisual);
-		//icons.conectar(painel);
-
-		//icons.conectarComponentes();
-		
-		//int maxLin = 20;
-		//int maxCol = 15;
-		//icons.carregarCircuito(maxLin, maxCol);
-		
-		//circuitoVisual.imprimirCircuitoNoConsole();
-		
+		icont.comecarJogo();
 	}
 }

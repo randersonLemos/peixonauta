@@ -3,14 +3,11 @@ package mc322.lab07.view.circuitovisual;
 import java.awt.Container;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
-import java.awt.Image;
 
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.SwingUtilities;
-
-import mc322.lab07.model.elemento.Elemento;
 
 public class CircuitoVisualJanela extends JFrame{
 	private static final long serialVersionUID = 9133938671148624950L;
@@ -74,6 +71,4 @@ public class CircuitoVisualJanela extends JFrame{
 	{
 		SwingUtilities.updateComponentTreeUI(this);	
 	}
-	
-	
 }

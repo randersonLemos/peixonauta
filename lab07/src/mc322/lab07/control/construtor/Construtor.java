@@ -3,11 +3,13 @@ package mc322.lab07.control.construtor;
 import mc322.lab07.control.controle.IControleConstrutor;
 import mc322.lab07.model.circuito.ICircuitoConstrutor;
 import mc322.lab07.model.elemento.Elemento;
+import mc322.lab07.model.elemento.IPilotoConstrutor;
 import mc322.lab07.model.elemento.Livre;
 
 public class Construtor implements IConstrutor{
 	ICircuitoConstrutor icirc = null;
 	IControleConstrutor icont = null;	
+	IPilotoConstrutor ipilo = null;
 
 	
 	public void conectar(IControleConstrutor icont)
@@ -19,6 +21,12 @@ public class Construtor implements IConstrutor{
 	{
 		this.icirc = icirc;
 	}
+	
+	public void conectar(IPilotoConstrutor ipilo)
+	{
+		this.ipilo = ipilo;
+	}
+
 	
 	public void carregarCircuito(int maxLin, int maxCol)
 	{	
