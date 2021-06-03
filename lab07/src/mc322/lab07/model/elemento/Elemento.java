@@ -3,7 +3,6 @@ package mc322.lab07.model.elemento;
 import java.awt.Image;
 
 import javax.swing.ImageIcon;
-import javax.swing.JLabel;
 
 public abstract class Elemento {
 	private int lin = -1;

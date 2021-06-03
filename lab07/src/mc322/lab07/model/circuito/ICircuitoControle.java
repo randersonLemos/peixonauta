@@ -7,4 +7,5 @@ public interface ICircuitoControle {
 	public int getMaxCol();
 	void setElemento(Elemento elemento);
 	public Elemento getElemento(int lin, int col);
+	
 }

@@ -12,12 +12,13 @@ import mc322.lab07.model.elemento.Fogo;
 import mc322.lab07.model.elemento.IPilotoControle;
 import mc322.lab07.model.elemento.Livre;
 import mc322.lab07.model.elemento.Muralha;
+import mc322.lab07.model.elemento.Piloto;
 import mc322.lab07.view.circuitovisual.ICircuitoVisualControle;
 import mc322.lab07.view.pilotovisual.IPilotoVisualControle;
 
 public class Controle implements IControle{	
-	private static int limiteSuperiorNumeroSorteado = 100;
-	private static int valoresLimiteElementosSemPiloto[] = new int[]{ 90, 7, 1, 1, 1 }; // livre, muralha, fogo, cafe, bebida
+	private static int limiteSuperiorNumeroSorteado = 1000;
+	private static int valoresLimiteElementosSemPiloto[] = new int[]{ 970, 25, 2, 1, 1 }; // livre, muralha, fogo, cafe, bebida
 	private static Random random = new Random();
 
 	ICircuitoControle icirc = null;
@@ -76,12 +77,19 @@ public class Controle implements IControle{
 					{
 						return new Bebida(lin, col);	
 					}
+					
 				}
 				valor -= valorLimite;
 			}
 		}		
-	}	
+	}
 	
+	public Elemento gerarPiloto(int lin, int col) {
+		Elemento piloto = new Piloto(lin, col);
+		return piloto;
+	}
+	
+
 	public void avancarElementosUmaLinhaNoCircuito()
 	{
 		for(int lin=icirc.getMaxLin() - 1; lin > 0; lin--)
@@ -104,7 +112,7 @@ public class Controle implements IControle{
 	
 	public void comecarJogo()
 	{
-		final long Segundos = (1000); //numero inteiro em segundos
+		final long Segundos = (40); //numero inteiro em segundos
 		/*
 		Conversao:
 		Segundos -> ms/frame
@@ -117,6 +125,7 @@ public class Controle implements IControle{
 			public void run() {
 			avancarElementosUmaLinhaNoCircuito();
 		    icvisu.atualizarJanela();
+		    //ipvisu.atualizarJanela();
 		    contador--;
 		    if(contador == 0)
 		    	tempo.cancel();

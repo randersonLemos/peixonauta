@@ -12,6 +12,7 @@ import mc322.lab07.view.circuitovisual.CircuitoVisual;
 import mc322.lab07.view.circuitovisual.ICircuitoVisual;
 import mc322.lab07.view.pilotovisual.IPilotoVisual;
 import mc322.lab07.view.pilotovisual.PilotoVisual;
+import mc322.lab07.view.painel.Painel;
 
 public class AppCorridinhaDaMassa {
 	public static void main(String args[])
@@ -22,25 +23,37 @@ public class AppCorridinhaDaMassa {
 		IConstrutor icons = new Construtor();
 		ICircuitoVisual icircVisu = new CircuitoVisual();	
 		IPilotoVisual ipiloVisu = new PilotoVisual();
+		Painel janela = new Painel();
+		
 		
 		icons.conectar(ipilo);
 		icons.conectar(icirc);
 		icons.conectar(icont);
+		
 	
 		icircVisu.conectar(icirc);
 		ipiloVisu.conectar(ipilo);
+		
+		icircVisu.conectar(janela);
+		ipiloVisu.conectar(janela);
 		
 		icont.conectar(ipilo);
 		icont.conectar(icirc);
 		icont.conectar(icircVisu);
 		icont.conectar(ipiloVisu);
 		
-		int maxLin = 18;
+		int maxLin = 11;
 		int maxCol = 15;
 		icons.carregar(maxLin, maxCol);
+		icircVisu.imprimirCircuitoNoConsole();
+		System.out.println();
+		//ipiloVisu.imprimirPilotoNoConsole();
+		
 		icircVisu.construirJanela(maxLin, maxCol);
+		//ipiloVisu.construirJanela(maxLin, maxCol);
+		
 		icircVisu.atualizarJanela();
-
+		//ipiloVisu.atualizarJanela();
 		icont.comecarJogo();
 	}
 }

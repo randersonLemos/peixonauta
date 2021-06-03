@@ -5,12 +5,12 @@ import mc322.lab07.model.circuito.ICircuitoConstrutor;
 import mc322.lab07.model.elemento.Elemento;
 import mc322.lab07.model.elemento.IPilotoConstrutor;
 import mc322.lab07.model.elemento.Livre;
+import mc322.lab07.model.elemento.Piloto;
 
 public class Construtor implements IConstrutor{
 	ICircuitoConstrutor icirc = null;
 	IControleConstrutor icont = null;	
 	IPilotoConstrutor ipilo = null;
-
 	
 	public void conectar(IControleConstrutor icont)
 	{
@@ -36,7 +36,7 @@ public class Construtor implements IConstrutor{
 		{
 			for(int col=0; col<maxCol; col++)
 			{
-				if(lin < maxLin - 5)
+				if(lin < maxLin - 2)
 				{
 					Elemento elemento = icont.geradorAleatorioDeElementosSemPiloto(lin, col);
 					icirc.setElemento(elemento);
@@ -46,7 +46,23 @@ public class Construtor implements IConstrutor{
 					icirc.setElemento(new Livre(lin, col));
 				}
 			}
-		}	
-		ipilo.setPosicao(maxLin, maxCol/2);
+		}
+		
+		ipilo.construirMatrizPiloto(maxLin, maxCol);
+		
+		/*for(int lin=0; lin<maxLin; lin++)
+		{
+			for(int col=0; col<maxCol; col++)
+			{
+				if(!(lin == (maxLin - 1) && col == (maxCol/2)))
+				{
+					ipilo.setElemento(new Livre(lin, col));
+				}
+				else
+				{
+					ipilo.setElemento(new Piloto(lin, col));
+				}
+			}
+		}*/	
 	}
 }
