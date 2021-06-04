@@ -4,6 +4,5 @@ import mc322.lab07.model.elemento.Elemento;
 
 public interface ICircuitoConstrutor 
 {
-	void setElemento(Elemento elemento);
-	public void construirMatrizCircuito(int maxLin, int maxCol);
+	void setMatriz(int maxLin, int maxCol, Elemento matriz[][]);
 }

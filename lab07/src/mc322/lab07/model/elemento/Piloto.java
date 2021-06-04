@@ -1,9 +1,16 @@
 package mc322.lab07.model.elemento;
 
+import mc322.lab07.model.circuito.ICircuitoPiloto;
+
 public class Piloto extends Elemento implements IPiloto{
-	private Elemento matriz[][];
-	private int maxLin = -1;
-	private int maxCol = -1;
+	ICircuitoPiloto icirc = null;
+	
+
+	public void conectar(ICircuitoPiloto icirc) {
+		this.icirc = icirc;
+		
+	}
+	
 	
 	public Piloto()
 	{
@@ -18,53 +25,46 @@ public class Piloto extends Elemento implements IPiloto{
 		setImageIcon("./textura/piloto_1.gif");
 	}
 	
+	
 	public void setPosicao(int lin, int col)
 	{
 		this.setLin(lin);
 		this.setCol(col);
+	}		
+
+	
+	public void moverParaCima()
+	{
+		int lin = this.getLin();
+		lin -= 1;
+		if(lin > 0 & lin < icirc.getMaxLin())
+			this.setLin(lin);
 	}
 	
-	public void construirMatrizPiloto(int maxLin, int maxCol)
+	
+	public void moverParaBaixo()
 	{
-		matriz = new Elemento[maxLin][maxCol];
-		this.maxLin = maxLin;
-		this.maxCol = maxCol;
-		
-		for(int lin=0; lin<maxLin; lin++)
-		{
-			for(int col=0; col<maxCol; col++)
-			{
-				matriz[lin][col] = null;
-			}
-		}
+		int lin = this.getLin();
+		lin += 1;
+		if(lin > 0 & lin < icirc.getMaxLin())
+			this.setLin(lin);
 	}
 	
-	public int getMaxLin()
+	
+	public void moverParaEsquerda()
 	{
-		return maxLin;
+		int col = this.getCol();
+		col -= 1;
+		if(col >= 0 & col < icirc.getMaxCol())
+			this.setCol(col);
 	}
 	
-	public int getMaxCol()
-	{
-		return maxCol;
-	}
 	
-	public Elemento getElemento(int lin, int col)
+	public void moverParaDireita()
 	{
-		if(lin >= 0 & lin < maxLin & col >= 0 & col < maxCol)
-		{
-			return matriz[lin][col];
-		}
-		return null;		
-	}
-	
-	public void setElemento(Elemento elemento)
-	{
-		int lin = elemento.getLin();
-		int col = elemento.getCol();
-		if(lin >= 0 & lin < maxLin & col >= 0 & col < maxCol)
-		{
-			matriz[lin][col] = elemento;
-		}
+		int col = this.getCol();
+		col += 1;
+		if(col >= 0 & col < icirc.getMaxCol())
+			this.setCol(col);
 	}
 }

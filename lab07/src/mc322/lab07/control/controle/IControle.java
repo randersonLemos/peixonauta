@@ -3,9 +3,9 @@ package mc322.lab07.control.controle;
 public interface IControle extends 
   IControleConstrutor 
 , IRCircuitoControle
-, IRCircuitoVIsualControle
 , IRPilotoControle
-, IRPilotoVisualControle
+, IRPainelControle 
+, IRComandoControle
 {
 	public void comecarJogo();
 }

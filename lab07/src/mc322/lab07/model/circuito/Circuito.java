@@ -3,23 +3,15 @@ package mc322.lab07.model.circuito;
 import mc322.lab07.model.elemento.Elemento;
 
 public class Circuito implements ICircuito{
-	private Elemento matriz[][];
+	private Elemento matriz[][] = null;
 	private int maxLin = -1;
 	private int maxCol = -1;
 	
-	public void construirMatrizCircuito(int maxLin, int maxCol)
+	public void setMatriz(int maxLin, int maxCol, Elemento matriz[][])
 	{
-		matriz = new Elemento[maxLin][maxCol];
 		this.maxLin = maxLin;
 		this.maxCol = maxCol;
-		
-		for(int lin=0; lin<maxLin; lin++)
-		{
-			for(int col=0; col<maxCol; col++)
-			{
-				matriz[lin][col] = null;
-			}
-		}
+		this.matriz = matriz;		
 	}
 	
 	public int getMaxLin()
@@ -34,11 +26,14 @@ public class Circuito implements ICircuito{
 	
 	public Elemento getElemento(int lin, int col)
 	{
-		if(lin >= 0 & lin < maxLin & col >= 0 & col < maxCol)
+		if(matriz != null)
 		{
-			return matriz[lin][col];
+			if(lin >= 0 & lin < maxLin & col >= 0 & col < maxCol)
+			{
+				return matriz[lin][col];
+			}
 		}
-		return null;		
+		return null;
 	}
 	
 	public void setElemento(Elemento elemento)

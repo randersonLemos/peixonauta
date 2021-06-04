@@ -4,5 +4,4 @@ import mc322.lab07.model.elemento.Elemento;
 
 public interface IControleConstrutor {
 	Elemento geradorAleatorioDeElementosSemPiloto(int lin, int col);
-	Elemento gerarPiloto(int lin, int col);
 }
