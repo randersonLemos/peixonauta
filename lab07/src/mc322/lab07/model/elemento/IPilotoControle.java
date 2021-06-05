@@ -5,4 +5,6 @@ public interface IPilotoControle {
 	public void moverParaBaixo();
 	public void moverParaEsquerda();
 	public void moverParaDireita();
+	public int getLin();
+	public int getCol();
 }

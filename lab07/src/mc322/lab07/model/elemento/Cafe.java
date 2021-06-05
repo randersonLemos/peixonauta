@@ -5,6 +5,6 @@ public class Cafe extends Elemento{
 	{
 		super(lin, col);
 		setSimbolo("C");
-		setImageIcon("./textura/cafe_1.png");
+		setImageIcon("./textura/porcao_2.gif");
 	}
 }

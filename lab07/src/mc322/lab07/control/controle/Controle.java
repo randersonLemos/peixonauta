@@ -136,10 +136,22 @@ public class Controle implements IControle, ActionListener, KeyListener
 		int maxI = 500;
 		for(int i=0; i<maxI; i++)
 		{
-			avancarElementosUmaLinhaNoCircuito();
+			avancarElementosUmaLinhaNoCircuito();			
 			ipain.atualizarImagemCircuitoPainel();
+			
+			int lin = ipilo.getLin();
+			int col = ipilo.getCol();
+			Elemento elem = icirc.getElemento(lin, col);
+			if(elem.getSimbolo().equals("M"))
+			{
+				if(lin+1 >= icirc.getMaxLin())
+					break;
+				ipilo.moverParaBaixo();
+			}
+			
+			
 			ipain.atualizarImagemPilotoPainel();
-			ipain.atualizarScore(i*10);
+			ipain.atualizarScore(i*10 + 10);
 			ipain.atualizar();				
 			try 
 			{	
@@ -184,7 +196,7 @@ public class Controle implements IControle, ActionListener, KeyListener
 			ipain.atualizar();
 		}
 	}
-
+	
 	@Override
 	public void keyPressed(KeyEvent e) {
 		// TODO Auto-generated method stub
