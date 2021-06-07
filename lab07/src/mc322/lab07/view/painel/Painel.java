@@ -19,6 +19,7 @@ import mc322.lab07.model.elemento.IPilotoPainel;
 public class Painel extends JFrame implements IPainel{	
 		private static final long serialVersionUID = 9133938671148624950L;
 		private JLabel matriz[][];
+		private JLabel ondaDeFogo[];
 		private Container contentPane = null;
 		private GridBagConstraints c = null;
 		ICircuitoPainel icirc = null;
@@ -26,6 +27,7 @@ public class Painel extends JFrame implements IPainel{
 
 		JButton play = null;
 		JLabel score = null;
+		JLabel status = null;
 	
 		public void conectar(ICircuitoPainel icirc)
 		{
@@ -55,6 +57,7 @@ public class Painel extends JFrame implements IPainel{
 			
 			play = new JButton(imagem);
 			score = new JLabel("0");
+			status = new JLabel("Bem Vindo");
 
 
 			
@@ -71,6 +74,10 @@ public class Painel extends JFrame implements IPainel{
 			score.setText("" + valor);
 		}
 		
+		public void atualizarStatus(String mensagem)
+		{
+			status.setText("" + mensagem);
+		}
 		
 		public void addActionListener(ActionListener I)
 		{
@@ -84,11 +91,12 @@ public class Painel extends JFrame implements IPainel{
 		}
 				
 		
-		public void setMatriz(int maxLin, int maxCol, JLabel matriz[][])
+		public void setMatriz(int maxLin, int maxCol, JLabel matriz[][], JLabel ondaDeFogo[])
 		{
 			//this.maxLin = maxLin;
 			//this.maxCol = maxCol;
 			this.matriz = matriz;
+			this.ondaDeFogo = ondaDeFogo;
 			
 			for(int lin=0; lin<maxLin; lin++)
 			{
@@ -99,17 +107,31 @@ public class Painel extends JFrame implements IPainel{
 			        contentPane.add(matriz[lin][col], c);	
 				}
 			}
+			
+			//Onda de fogo atras do carro
+			for(int col=0; col<maxCol; col++)
+			{	
+		        c.gridy = maxLin;
+		        c.gridx = col;
+		        contentPane.add(ondaDeFogo[col], c);	
+			}
+			
+			//Play
 	        c.gridy = maxLin-1;
 	        c.gridx = maxCol;
 			contentPane.add(play, c);
 			
+			//Score
 	        c.gridy = 0;
 	        c.gridx = maxCol;
 			contentPane.add(new JLabel("SCORE"), c);
-			
-	        c.gridy = 0;
 	        c.gridx = maxCol+1;
 			contentPane.add(score, c);
+			
+			//Status
+			c.gridy = 5;
+	        c.gridx = maxCol;
+	        contentPane.add(status, c);
 		}
 				
 		
@@ -136,13 +158,28 @@ public class Painel extends JFrame implements IPainel{
 			}		
 		}
 		
+		public void atualizarOndaDeFogo()
+		{
+			int maxCol = icirc.getMaxCol();
+			for(int col=0; col<maxCol; col++)
+			{
+				ImageIcon imagem = new ImageIcon(
+						  new ImageIcon("./textura/fogo_4.gif").getImage().getScaledInstance(50, 50, Image.SCALE_DEFAULT)
+						  );
+				JLabel jlabel = ondaDeFogo[col];
+				jlabel.setIcon(imagem);
+			}
+		}
+		
 		
 		public void atualizarImagemPilotoPainel()
 		{
+			
 			ImageIcon imagem = ipilo.getImageIcon();
 			int lin = ipilo.getLin();
 			int col = ipilo.getCol();
-			atualizarImagem(imagem, lin, col);
+			if(lin < icirc.getMaxLin())
+				atualizarImagem(imagem, lin, col);
 		}
 		
 		

@@ -59,7 +59,8 @@ public class Construtor implements IConstrutor{
 						matriz[lin][col] = new Livre(lin, col);
 					}
 				}
-			}		
+			}	
+			
 			icirc.setMatriz(maxLin, maxCol, matriz);
 		}	
 		
@@ -67,6 +68,7 @@ public class Construtor implements IConstrutor{
 				
 		{
 			JLabel matriz[][] = new JLabel[maxLin][maxCol];
+			JLabel ondaDeFogo[] = new JLabel[maxCol];
 			
 			for(int lin=0; lin<maxLin; lin++)
 			{
@@ -75,8 +77,13 @@ public class Construtor implements IConstrutor{
 					JLabel jlabel = new JLabel();
 					matriz[lin][col] = jlabel;
 				}
-			}			
-			ipain.setMatriz(maxLin, maxCol, matriz);
+			}
+			for(int col=0; col<maxCol; col++)
+			{
+				JLabel jlabel = new JLabel();
+				ondaDeFogo[col] = jlabel;
+			}
+			ipain.setMatriz(maxLin, maxCol, matriz, ondaDeFogo);
 		}
 	}
 }

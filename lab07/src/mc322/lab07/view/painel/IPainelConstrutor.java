@@ -4,5 +4,5 @@ import javax.swing.JLabel;
 
 public interface IPainelConstrutor 
 {
-	public void setMatriz(int maxLin, int maxCol, JLabel matriz[][]);
+	public void setMatriz(int maxLin, int maxCol, JLabel matriz[][], JLabel ondaDeFogo[]);
 }

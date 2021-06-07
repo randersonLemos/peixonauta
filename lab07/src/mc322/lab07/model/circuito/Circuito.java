@@ -14,6 +14,7 @@ public class Circuito implements ICircuito{
 		this.matriz = matriz;		
 	}
 	
+	
 	public int getMaxLin()
 	{
 		return maxLin;

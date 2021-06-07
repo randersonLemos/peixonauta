@@ -12,4 +12,6 @@ public interface IPainelControle
 	public void addActionListener(ActionListener I);
 	public void addKeyListener(KeyListener I);
 	public void atualizarScore(int valor);
+	public void atualizarStatus(String mensagem);
+	public void atualizarOndaDeFogo();
 }

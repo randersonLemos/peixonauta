@@ -35,36 +35,59 @@ public class Piloto extends Elemento implements IPiloto{
 	
 	public void moverParaCima()
 	{
+		
 		int lin = this.getLin();
+		int col = this.getCol();
 		lin -= 1;
-		if(lin > 0 & lin < icirc.getMaxLin())
-			this.setLin(lin);
+		
+		Elemento elem = icirc.getElemento(lin, col);
+		
+		if(!(elem.getSimbolo().equals("M")))
+			if(lin > 0 & lin < icirc.getMaxLin())
+				this.setLin(lin);
 	}
 	
 	
 	public void moverParaBaixo()
 	{
 		int lin = this.getLin();
+		int col = this.getCol();
+		Elemento elem = icirc.getElemento(lin, col);
 		lin += 1;
-		if(lin > 0 & lin < icirc.getMaxLin())
+		
+		if(lin > 0 & lin < icirc.getMaxLin()) {
+			Elemento elem2 = icirc.getElemento(lin, col);
+			if(!(elem2.getSimbolo().equals("M")))
+				this.setLin(lin);
+		}
+		
+		else if(lin == icirc.getMaxLin() && elem.getSimbolo().equals("M"))
 			this.setLin(lin);
 	}
 	
 	
 	public void moverParaEsquerda()
 	{
+		int lin = this.getLin();
 		int col = this.getCol();
 		col -= 1;
-		if(col >= 0 & col < icirc.getMaxCol())
-			this.setCol(col);
+		Elemento elem = icirc.getElemento(lin, col);
+		
+		if(!elem.getSimbolo().equals("M"))
+			if(col >= 0 & col < icirc.getMaxCol())
+				this.setCol(col);
 	}
 	
 	
 	public void moverParaDireita()
 	{
+		int lin = this.getLin();
 		int col = this.getCol();
 		col += 1;
-		if(col >= 0 & col < icirc.getMaxCol())
-			this.setCol(col);
+		Elemento elem = icirc.getElemento(lin, col);
+		
+		if(!elem.getSimbolo().equals("M"))
+			if(col >= 0 & col < icirc.getMaxCol())
+				this.setCol(col);
 	}
 }

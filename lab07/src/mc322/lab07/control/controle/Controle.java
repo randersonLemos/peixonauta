@@ -19,7 +19,7 @@ import mc322.lab07.view.painel.IPainelControle;
 public class Controle implements IControle, ActionListener, KeyListener
 {	
 	private static int limiteSuperiorNumeroSorteado = 1000;
-	private static int valoresLimiteElementosSemPiloto[] = new int[]{ 950, 40, 5, 5 }; // livre, muralha, fogo, cafe
+	private static int valoresLimiteElementosSemPiloto[] = new int[]{ 800, 180, 15, 5 }; // livre, muralha, fogo, pocao
 	private static Random random = new Random();
 	private Boolean comecar = false;
 	
@@ -115,6 +115,7 @@ public class Controle implements IControle, ActionListener, KeyListener
 		ipain.mostrar();
 		ipain.atualizarImagemCircuitoPainel();
 		ipain.atualizarImagemPilotoPainel();
+		ipain.atualizarOndaDeFogo();
 		ipain.atualizar();
 		
 		while(true)
@@ -132,33 +133,51 @@ public class Controle implements IControle, ActionListener, KeyListener
 				e.printStackTrace();
 			}
 		}
-		
+		int poderzin = 0; //duracao da pocao
+		ipain.atualizarStatus("Boa Sorte");
+		boolean FimDeJogo = false;
 		int maxI = 500;
+		int lin;
+		int col;
 		for(int i=0; i<maxI; i++)
 		{
-			avancarElementosUmaLinhaNoCircuito();			
-			ipain.atualizarImagemCircuitoPainel();
+			if(poderzin != 0) //Atualizando a duracao da pocao
+				poderzin--;
 			
-			int lin = ipilo.getLin();
-			int col = ipilo.getCol();
-			Elemento elem = icirc.getElemento(lin, col);
-			if(elem.getSimbolo().equals("M"))
-			{
-				if(lin+1 >= icirc.getMaxLin())
-					break;
-				ipilo.moverParaBaixo();
+			avancarElementosUmaLinhaNoCircuito();
+			if(FimDeJogo)
+				break;
+			
+			lin = ipilo.getLin();
+			col = ipilo.getCol();
+			//System.out.println(lin);
+			if(lin < icirc.getMaxLin()) {
+				Elemento elem = icirc.getElemento(lin, col);
+				if(elem.getSimbolo().equals("M"))
+				{
+					if(lin+1 >= icirc.getMaxLin())
+						FimDeJogo = Terminar("Muro te cercou");
+					ipilo.moverParaBaixo();
+				}
+				
+				if(elem.getSimbolo().equals("F") && poderzin == 0)
+					FimDeJogo = Terminar("Fogo");
+				else if(elem.getSimbolo().equals("C"))
+					poderzin = 60;			//tempo de duracao da pocao
+					
+				
+				ipain.atualizarImagemCircuitoPainel();
+				ipain.atualizarImagemPilotoPainel();
+				ipain.atualizarScore(i*10 + 10);
+				ipain.atualizar();
 			}
-			
-			
-			ipain.atualizarImagemPilotoPainel();
-			ipain.atualizarScore(i*10 + 10);
-			ipain.atualizar();				
 			try 
 			{	
 				float a = (1 - 100)/(float)maxI;
 				float b = 100;
 
 				Thread.sleep((int)(a*i + b));
+				//Thread.sleep(1000);
 			} 
 			catch (InterruptedException e) 
 			{
@@ -174,7 +193,16 @@ public class Controle implements IControle, ActionListener, KeyListener
 			String key = "" + e.getKeyChar() + "";
 			if(key.toLowerCase().equals("w"))
 			{
-				ipilo.moverParaCima();
+				int lin = ipilo.getLin();
+				int col = ipilo.getCol();
+				Elemento elem = icirc.getElemento(lin, col);
+				if(elem.getSimbolo().equals("M"))
+				{
+					ipilo.moverParaBaixo();
+				}
+				
+				if(!elem.getSimbolo().equals("M"))
+					ipilo.moverParaCima();
 			}
 			
 			if(key.toLowerCase().equals("s"))
@@ -190,7 +218,8 @@ public class Controle implements IControle, ActionListener, KeyListener
 			if(key.toLowerCase().equals("d"))
 			{
 				ipilo.moverParaDireita();	
-			}	
+			}
+			
 			ipain.atualizarImagemCircuitoPainel();
 			ipain.atualizarImagemPilotoPainel();
 			ipain.atualizar();
@@ -206,8 +235,7 @@ public class Controle implements IControle, ActionListener, KeyListener
 
 	@Override
 	public void keyReleased(KeyEvent e) {
-		// TODO Auto-generated method stub		
-		
+		// TODO Auto-generated method stub			
 	}
 	
 	
@@ -215,4 +243,18 @@ public class Controle implements IControle, ActionListener, KeyListener
 	{	
 		comecar = true;	
 	}
+	
+	
+	public boolean Terminar(String motivo) {
+		//Criar janela dizendo "GAME OVER"
+		if(motivo.equals("Muro te cercou"))
+			ipain.atualizarStatus("Game Over: Consumido");
+		else if(motivo.equals("Fogo"))
+			ipain.atualizarStatus("Game Over: Explodiu");
+		comecar = false;
+		return true;
+	}
+	
+	
+	
 }
