@@ -7,4 +7,10 @@ public interface IPilotoControle {
 	public void moverParaDireita();
 	public int getLin();
 	public int getCol();
+	public void setImagemIcon1();
+	public void setImagemIcon2();
+	public void setImagemIcon3();
+	public void setPosicao(int lin, int col);	
+	public void setPoderzin(int valor);
+	public int getPoderzin();
 }

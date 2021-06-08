@@ -20,10 +20,12 @@ public class Circuito implements ICircuito{
 		return maxLin;
 	}
 	
+	
 	public int getMaxCol()
 	{
 		return maxCol;
 	}
+	
 	
 	public Elemento getElemento(int lin, int col)
 	{
@@ -36,6 +38,7 @@ public class Circuito implements ICircuito{
 		}
 		return null;
 	}
+	
 	
 	public void setElemento(Elemento elemento)
 	{

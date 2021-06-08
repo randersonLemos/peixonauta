@@ -5,13 +5,13 @@ import java.awt.event.KeyListener;
 
 public interface IPainelControle 
 {
-	public void atualizar();
-	public void mostrar();
+	public void atualizarPainel();
+	public void mostrarPainel();
 	public void atualizarImagemCircuitoPainel();
 	public void atualizarImagemPilotoPainel();
-	public void addActionListener(ActionListener I);
-	public void addKeyListener(KeyListener I);
+	public void addPlayActionListener(ActionListener I);
+	public void addPlayKeyListener(KeyListener I);
+	//public void addResetActionListener(ActionListener I);
 	public void atualizarScore(int valor);
 	public void atualizarStatus(String mensagem);
-	public void atualizarOndaDeFogo();
 }
