@@ -9,8 +9,11 @@ apenas muros intransponíveis enquanto outros labaredas de fogo mortais.
 Há também, no ciruito, porções mágicas que dotam o carro de habilidades
 especiais e que podem ser essenciais para a sobrevivência do piloto.
 
+![Capa](assets/capa.png)
+
 # Equipe Peixonauta
 Pablo Areia Delgado. R.: 223037
+
 Randerson Araújo de Lemos. RA.: 103897
 
 # Vídeos do Projeto
@@ -22,12 +25,14 @@ Randerson Araújo de Lemos. RA.: 103897
 [apresentação](./assets)
 
 
-# Documentação dos Componentes
+# Documentação
 ## Diagramas
 ### Diagrame Geral do Projeto
+
 xxx xxx xxx
 
 ### Diagrama Geral dos Componentes
+![Arquitetura](assets/capa.png)
 
 ### Detalhamento de Componentes
 #### Compoenentes <Nome do Componente>
