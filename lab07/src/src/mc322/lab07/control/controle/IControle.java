@@ -5,7 +5,6 @@ public interface IControle extends
 , IRCircuitoControle
 , IRPilotoControle
 , IRPainelControle 
-, IRComandoControle
 {
 	public void comecarJogo();
 }

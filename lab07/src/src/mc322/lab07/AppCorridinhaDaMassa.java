@@ -1,7 +1,5 @@
 package mc322.lab07;
 
-import mc322.lab07.control.comandos.Comando;
-import mc322.lab07.control.comandos.IComando;
 import mc322.lab07.control.construtor.Construtor;
 import mc322.lab07.control.construtor.IConstrutor;
 import mc322.lab07.control.controle.Controle;
@@ -21,7 +19,6 @@ public class AppCorridinhaDaMassa {
 		IControle icont = new Controle();
 		IConstrutor icons = new Construtor();
 		IPainel ipain = new Painel();		
-		IComando icoma = new Comando();
 		
 		icons.conectar(ipilo);
 		icons.conectar(icirc);
@@ -33,7 +30,6 @@ public class AppCorridinhaDaMassa {
 		icont.conectar(ipilo);
 		icont.conectar(icirc);
 		icont.conectar(ipain);
-		icont.conectar(icoma);
 		
 		ipain.conectar(ipilo);
 		ipain.conectar(icirc);

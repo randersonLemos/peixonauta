@@ -6,7 +6,6 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.util.Random;
 
-import mc322.lab07.control.comandos.IComandoControle;
 import mc322.lab07.model.circuito.ICircuitoControle;
 import mc322.lab07.model.elemento.Cafe;
 import mc322.lab07.model.elemento.Elemento;
@@ -27,7 +26,6 @@ public class Controle implements IControle, ActionListener, KeyListener
 	ICircuitoControle icirc = null;
 	IPilotoControle ipilo = null;
 	IPainelControle ipain = null;
-	IComandoControle icoma = null;
 	
 	int i = 0;
 	
@@ -46,15 +44,9 @@ public class Controle implements IControle, ActionListener, KeyListener
 	public void conectar(IPainelControle ipain)
 	{
 		this.ipain = ipain;
-	}
+	}	
 	
-	
-	public void conectar(IComandoControle icoma)
-	{
-		this.icoma = icoma;
-	}
-	
-	
+
 	public Elemento geradorAleatorioDeElementosSemPiloto(int lin, int col)
 	{
 		int valor = random.nextInt(limiteSuperiorNumeroSorteado);
