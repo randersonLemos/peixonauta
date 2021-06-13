@@ -29,10 +29,9 @@ Randerson Araújo de Lemos. RA.: 103897
 ## Diagramas
 ### Diagrame Geral do Projeto
 
-xxx xxx xxx
+![Arquitetura](assets/arquitetura.png)
 
 ### Diagrama Geral dos Componentes
-![Arquitetura](assets/arquitetura.png)
 
 ### Detalhamento de Componentes
 #### Compoenentes <Nome do Componente>
