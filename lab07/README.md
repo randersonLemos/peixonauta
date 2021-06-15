@@ -132,6 +132,10 @@ public interface IControleConstrutor {
 	Elemento geradorAleatorioDeElementosSemPiloto(int lin, int col);
 }
 ~~~
+Método | Objetivo
+-------| --------
+`geradorAleatorioDeElementosSemPiloto` | Gera um Elemento seguindo certas probabilidades <br> Possibilidades: Asfalto, Muro, Fogo ou Poção
+
 ### Interface `ICircuitoContrutor`
 Construtor poder criar a matriz do Objeto Circuito (matriz back-end)
 ~~~java
@@ -140,6 +144,10 @@ public interface ICircuitoConstrutor
 	void setMatriz(int maxLin, int maxCol, Elemento matriz[][]);
 }
 ~~~
+Método | Objetivo
+-------| --------
+`setMatriz` | Atualiza a matriz Circuito
+
 ### Interface `ICircuitoControle`
 Controle ter acesso a informações sobre a matriz e poder atualizá-la
 ~~~java
@@ -151,6 +159,13 @@ public interface ICircuitoControle {
 	
 }
 ~~~
+Método | Objetivo
+-------| --------
+`getMaxLin` | Acessa o numero de linhas da matriz Circuito
+`getMaxCol` | Acessa o numero de colunas da matriz Circuito
+`setElemento` | Atualiza uma posição da matriz Circuito (ou seja, um Elemento)
+`getElemento` | Acessa uma posição da matriz Circuito (ou seja, um Elemento)
+
 ### Interface `ICircuitoPainel`
 Interligar as matrizes back-end e front-end
 ~~~java
