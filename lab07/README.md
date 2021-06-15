@@ -237,6 +237,12 @@ public interface IPilotoPainel
 	public ImageIcon getImageIcon();
 }
 ~~~
+Método | Objetivo
+-------| --------
+`getLin` | Acessa a linha que o Elemento está
+`getCol` | Acessa a coluna que o Elemento está
+`getImageIcon` | Acessa a imagem de um Elemento (arquivo de imagem que será incrementado na interface gráfica)
+
 ### Interface `IPainelConstrutor`
 Construtor cria o Objeto Painel (matriz front-end) sobre as condições iniciais do objeto Circuito
 ~~~java
@@ -245,6 +251,10 @@ public interface IPainelConstrutor
 	public void setMatriz(int maxLin, int maxCol, JLabel matriz[][]);
 }
 ~~~
+Método | Objetivo
+-------| --------
+`setMatriz` | Atualiza a matriz Painel
+
 ### Interface `IPainelControle`
 Controle ser capaz de atualizar a interface gráfica a cada iteração
 ~~~java
