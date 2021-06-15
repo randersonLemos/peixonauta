@@ -176,6 +176,12 @@ public interface ICircuitoPainel
 	public Elemento getElemento(int lin, int col);
 }
 ~~~
+Método | Objetivo
+-------| --------
+`getMaxLin` | Acessa o numero de linhas da matriz Circuito
+`getMaxCol` | Acessa o numero de colunas da matriz Circuito
+`getElemento` | Acessa uma posição da matriz Circuito (ou seja, um Elemento)
+
 ### Interface `ICircuitoPiloto`
 Piloto e Circuito são independentes no código, o objeto Piloto sabe onde ele está, mas precisa de informações do Circuito para conhecer os arredores
 ~~~java
@@ -186,6 +192,12 @@ public interface ICircuitoPiloto
 	public Elemento getElemento(int lin, int col);
 }
 ~~~
+Método | Objetivo
+-------| --------
+`getMaxLin` | Acessa o numero de linhas da matriz Circuito
+`getMaxCol` | Acessa o numero de colunas da matriz Circuito
+`getElemento` | Acessa uma posição da matriz Circuito (ou seja, um Elemento)
+
 ### Interface `IPilotoConstrutor`
 Construtor poder criar o Objeto Piloto
 ~~~java
@@ -193,6 +205,10 @@ public interface IPilotoConstrutor {
 	public void setPosicao(int lin, int col);
 }
 ~~~
+Método | Objetivo
+-------| --------
+`setPosicao` | Atualiza a posição do piloto (essa informação é guardada no Piloto)
+
 ### Interface `IPilotoControle`
 Controle poder ter as informações do piloto e poder atualizá-lo
 ~~~java
