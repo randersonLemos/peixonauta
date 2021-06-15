@@ -35,7 +35,7 @@ Randerson Araújo de Lemos. RA.: 103897
 
 ## Componente `Painel`
 
-![Painel](assets/Componente_Painel.png)
+![Painel](assets/Componente_Painel.jpg)
 
 **Ficha Técnica**
 item | detalhamento
@@ -55,7 +55,7 @@ public interface IPainel extends
 ~~~
 ## Componente `Elemento`
 
-![Elemento](assets/Componente_Elemento.png)
+![Elemento](assets/Componente_Elemento.jpg)
 
 **Ficha Técnica**
 item | detalhamento
@@ -75,7 +75,7 @@ public interface IPiloto extends
 ~~~
 ## Componente `Circuito`
 
-![Circuito](assets/Componente_Circuito.png)
+![Circuito](assets/Componente_Circuito.jpg)
 
 **Ficha Técnica**
 item | detalhamento
@@ -94,7 +94,7 @@ public interface ICircuito extends
 ~~~
 ## Componente `Controle`
 
-![Controle](assets/Componente_Controle.png)
+![Controle](assets/Componente_Controle.jpg)
 
 **Ficha Técnica**
 item | detalhamento
@@ -115,7 +115,7 @@ public interface IControle extends
 ~~~
 ## Componente `Construtor`
 
-![Construtor](assets/Componente_Construtor.png)
+![Construtor](assets/Componente_Construtor.jpg)
 
 **Ficha Técnica**
 item | detalhamento
