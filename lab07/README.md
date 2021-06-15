@@ -33,7 +33,6 @@ Randerson Araújo de Lemos. RA.: 103897
 
 ## Diagrama Geral dos Componentes
 
-## Detalhamento de Componentes
 ## Componente `Painel`
 ## Componente `Elemento`
 ## Componente `Circuito`
