@@ -31,12 +31,16 @@ Randerson Araújo de Lemos. RA.: 103897
 
 ![Arquitetura](assets/arquitetura.png)
 
-### Diagrama Geral dos Componentes
+## Diagrama Geral dos Componentes
 
-### Detalhamento de Componentes
-#### Compoenentes <Nome do Componente>
+## Detalhamento de Componentes
+## Componente `Painel`
+## Componente `Elemento`
+## Componente `Circuito`
+## Componente `Controle`
+## Componente `Construtor`
 
-### Detalhamento das Interfaces
-#### Interface <nome da interface>
+## Detalhamento das Interfaces
+### Interface <nome da interface>
 
-### Plano de Exceção
+## Plano de Exceções
