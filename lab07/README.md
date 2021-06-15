@@ -120,7 +120,7 @@ public interface IControle extends
 **Ficha Técnica**
 item | detalhamento
 ----- | -----
-Classe | `<caminho completo da classe com pacotes>`
+Classe | [Classe Construtor](src/src/mc322/lab07/control/construtor/Construtor.java)
 Autores | `<Pablo e Randerson>`
 Interfaces | IRCircuitoConstrutor <br> IRControleConstrutor <br> IRPilotoConstrutor <br> IRPainelConstrutor
 
