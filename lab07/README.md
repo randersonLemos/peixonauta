@@ -40,7 +40,7 @@ Randerson Araújo de Lemos. RA.: 103897
 **Ficha Técnica**
 item | detalhamento
 ----- | -----
-Classe | `<caminho completo da classe com pacotes>`
+Classe | [Classe Painel](src/src/mc322/lab07/view/painel/IPainel.java)
 Autores | `<Pablo e Randerson>`
 Interfaces | IPainelConstrutor <br> IPainelControle <br> IRCircuitoPainel <br> IRPilotoPainel
 
@@ -60,7 +60,7 @@ public interface IPainel extends
 **Ficha Técnica**
 item | detalhamento
 ----- | -----
-Classe | `<caminho completo da classe com pacotes>`
+Classe | [Classe Elemento](src/src/mc322/lab07/model/elemento/Elemento.java)
 Autores | `<Pablo e Randerson>`
 Interfaces |  IPilotoControle <br> IPilotoConstrutor <br> IPilotoPainel <br> IRCircuitoPiloto
 
@@ -80,7 +80,7 @@ public interface IPiloto extends
 **Ficha Técnica**
 item | detalhamento
 ----- | -----
-Classe | `<caminho completo da classe com pacotes>`
+Classe | [Classe Circuito](src/src/mc322/lab07/model/circuito/Circuito.java)
 Autores | `<Pablo e Randerson>`
 Interfaces | ICircuitoContrutor <br> ICircuitoControle <br> ICircuitoPainel <br>  ICircuitoPiloto
 
@@ -99,7 +99,7 @@ public interface ICircuito extends
 **Ficha Técnica**
 item | detalhamento
 ----- | -----
-Classe | `<caminho completo da classe com pacotes>`
+Classe | [Classe Controle](src/src/mc322/lab07/control/controle/Controle.java)
 Autores | `<Pablo e Randerson>`
 Interfaces | IControleConstrutor <br> IRCircuitoControle <br> IRPilotoControle <br> IRPainelControle
 
