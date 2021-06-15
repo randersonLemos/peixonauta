@@ -34,12 +34,107 @@ Randerson Araújo de Lemos. RA.: 103897
 ## Diagrama Geral dos Componentes
 
 ## Componente `Painel`
+
+**Ficha Técnica**
+item | detalhamento
+----- | -----
+Classe | `<caminho completo da classe com pacotes>`
+Autores | `<Pablo e Randerson>`
+Interfaces | IPainelConstrutor <br> IPainelControle <br> IRCircuitoPainel <br> IRPilotoPainel
+
+~~~java
+public interface IPainel extends 
+  IPainelConstrutor
+, IPainelControle
+, IRCircuitoPainel
+, IRPilotoPainel
+{
+}
+~~~
 ## Componente `Elemento`
+
+**Ficha Técnica**
+item | detalhamento
+----- | -----
+Classe | `<caminho completo da classe com pacotes>`
+Autores | `<Pablo e Randerson>`
+Interfaces |  IPilotoControle <br> IPilotoConstrutor <br> IPilotoPainel <br> IRCircuitoPiloto
+
+~~~java
+public interface IPiloto extends
+  IPilotoControle
+, IPilotoConstrutor
+, IPilotoPainel
+, IRCircuitoPiloto
+{
+}
+~~~
 ## Componente `Circuito`
+
+**Ficha Técnica**
+item | detalhamento
+----- | -----
+Classe | `<caminho completo da classe com pacotes>`
+Autores | `<Pablo e Randerson>`
+Interfaces | ICircuitoContrutor <br> ICircuitoControle <br> ICircuitoPainel <br>  ICircuitoPiloto
+
+~~~java
+public interface ICircuito extends 
+  ICircuitoConstrutor
+, ICircuitoControle
+, ICircuitoPainel
+, ICircuitoPiloto{
+}
+~~~
 ## Componente `Controle`
+
+**Ficha Técnica**
+item | detalhamento
+----- | -----
+Classe | `<caminho completo da classe com pacotes>`
+Autores | `<Pablo e Randerson>`
+Interfaces | IControleConstrutor <br> IRCircuitoControle <br> IRPilotoControle <br> IRPainelControle
+
+~~~java
+public interface IControle extends 
+  IControleConstrutor 
+, IRCircuitoControle
+, IRPilotoControle
+, IRPainelControle 
+{
+	public void comecarJogo();
+}
+~~~
 ## Componente `Construtor`
 
+**Ficha Técnica**
+item | detalhamento
+----- | -----
+Classe | `<caminho completo da classe com pacotes>`
+Autores | `<Pablo e Randerson>`
+Interfaces | IRCircuitoConstrutor <br> IRControleConstrutor <br> IRPilotoConstrutor <br> IRPainelConstrutor
+
+~~~java
+public interface IConstrutor extends 
+  IRCircuitoConstrutor
+, IRControleConstrutor
+, IRPilotoConstrutor
+, IRPainelConstrutor
+{
+	public void construir(int maxLin, int maxCol);
+}
+~~~
 ## Detalhamento das Interfaces
-### Interface <nome da interface>
+
+### Interface `IControleConstrutor`
+### Interface `ICircuitoContrutor`
+### Interface `ICircuitpControle`
+### Interface `ICircuitoPainel`
+### Interface `ICircuitoPiloto`
+### Interface `IPilotoConstrutor`
+### Interface `IPilotoControle`
+### Interface `IPilotoPainel`
+### Interface `IPainelConstrutor`
+### Interface `IPainelControle`
 
 ## Plano de Exceções
