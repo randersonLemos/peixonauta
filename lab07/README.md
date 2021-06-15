@@ -128,7 +128,7 @@ public interface IConstrutor extends
 
 ### Interface `IControleConstrutor`
 ### Interface `ICircuitoContrutor`
-### Interface `ICircuitpControle`
+### Interface `ICircuitoControle`
 ### Interface `ICircuitoPainel`
 ### Interface `ICircuitoPiloto`
 ### Interface `IPilotoConstrutor`
