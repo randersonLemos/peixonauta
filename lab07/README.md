@@ -227,6 +227,19 @@ public interface IPilotoControle {
 	public int getPoderzin();
 }
 ~~~
+Método | Objetivo
+-------| --------
+`moverParaCima` | Move o piloto para cima se possível
+`moverParaBaixo` | Move o piloto para baixo se possível
+`moverParaEsquerda` | Move o piloto para esquerda se possível
+`moverParaDireita` | Move o piloto para direita se possível
+`getLin` | Acessa a linha que o Elemento está
+`getCol` | Acessa a coluna que o Elemento está
+`setImagemIcon1,2,3` | Acessam imagens específicas (1,2 ou 3) (arquivos de imagem que serão incrementados na interface gráfica)
+`setPosicao` | Atualiza a posição do piloto (essa informação é guardada no Piloto)
+`setPoderzin` | Dispara o tempo de duração da poção -> tempo = x;
+`getPoderzin` | Acessa o tempo atual restante de duração da poção
+
 ### Interface `IPilotoPainel`
 O piloto só está inserido na matriz front-end, Painel pega suas informações e atualiza a matriz
 ~~~java
@@ -270,5 +283,15 @@ public interface IPainelControle
 	public void atualizarStatus(String mensagem);
 }
 ~~~
+Método | Objetivo
+-------| --------
+`atualizarPainel` | atualiza o estado do Painel (o que o player vai ver)
+`mostrarPainel` | manda mostrar o Painel em seu estado atualizado
+`atualizarImagemCircuitoPainel` | atualiza o circuito mostrado do Painel (matirz front-end) a partir do objeto Circuito (matriz back-end)
+`atualizarImagemPilotoPainel` | atualiza a posição do Piloto no Painel
+`addPlayActionListener` | cria um observador
+`addPlayKeyListener` | cria um observador que dispara um evento quando uma tecla é apertada
+`atualizarScore` | Atualiza a pontuação do player mostrado no painel
+`atualizarStatus` | Atualiza o status do jogo mostrado no painel
 
 ## Plano de Exceções
