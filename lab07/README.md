@@ -40,7 +40,7 @@ Randerson Araújo de Lemos. RA.: 103897
 **Ficha Técnica**
 item | detalhamento
 ----- | -----
-Classe | [Classe Painel](src/src/mc322/lab07/view/painel/IPainel.java)
+Classe | [Classe Painel](src/src/mc322/lab07/view/painel/Painel.java)
 Autores | `<Pablo e Randerson>`
 Interfaces | IPainelConstrutor <br> IPainelControle <br> IRCircuitoPainel <br> IRPilotoPainel
 
