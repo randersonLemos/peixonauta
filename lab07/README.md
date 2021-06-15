@@ -127,14 +127,107 @@ public interface IConstrutor extends
 ## Detalhamento das Interfaces
 
 ### Interface `IControleConstrutor`
+~~~java
+public interface IControleConstrutor {
+	Elemento geradorAleatorioDeElementosSemPiloto(int lin, int col);
+}
+~~~
 ### Interface `ICircuitoContrutor`
+Construtor poder criar a matriz do Objeto Circuito (matriz back-end)
+~~~java
+public interface ICircuitoConstrutor 
+{
+	void setMatriz(int maxLin, int maxCol, Elemento matriz[][]);
+}
+~~~
 ### Interface `ICircuitoControle`
+Controle ter acesso a informações sobre a matriz e poder atualizá-la
+~~~java
+public interface ICircuitoControle {
+	public int getMaxLin();
+	public int getMaxCol();
+	void setElemento(Elemento elemento);
+	public Elemento getElemento(int lin, int col);
+	
+}
+~~~
 ### Interface `ICircuitoPainel`
+Interligar as matrizes back-end e front-end
+~~~java
+public interface ICircuitoPainel 
+{
+	public int getMaxLin();
+	public int getMaxCol();
+	public Elemento getElemento(int lin, int col);
+}
+~~~
 ### Interface `ICircuitoPiloto`
+Piloto e Circuito são independentes no código, o objeto Piloto sabe onde ele está, mas precisa de informações do Circuito para conhecer os arredores
+~~~java
+public interface ICircuitoPiloto 
+{
+	public int getMaxLin();
+	public int getMaxCol();
+	public Elemento getElemento(int lin, int col);
+}
+~~~
 ### Interface `IPilotoConstrutor`
+Construtor poder criar o Objeto Piloto
+~~~java
+public interface IPilotoConstrutor {
+	public void setPosicao(int lin, int col);
+}
+~~~
 ### Interface `IPilotoControle`
+Controle poder ter as informações do piloto e poder atualizá-lo
+~~~java
+public interface IPilotoControle {
+	public void moverParaCima();
+	public void moverParaBaixo();
+	public void moverParaEsquerda();
+	public void moverParaDireita();
+	public int getLin();
+	public int getCol();
+	public void setImagemIcon1();
+	public void setImagemIcon2();
+	public void setImagemIcon3();
+	public void setPosicao(int lin, int col);	
+	public void setPoderzin(int valor);
+	public int getPoderzin();
+}
+~~~
 ### Interface `IPilotoPainel`
+O piloto só está inserido na matriz front-end, Painel pega suas informações e atualiza a matriz
+~~~java
+public interface IPilotoPainel 
+{
+	public int getLin();
+	public int getCol();
+	public ImageIcon getImageIcon();
+}
+~~~
 ### Interface `IPainelConstrutor`
+Construtor cria o Objeto Painel (matriz front-end) sobre as condições iniciais do objeto Circuito
+~~~java
+public interface IPainelConstrutor 
+{
+	public void setMatriz(int maxLin, int maxCol, JLabel matriz[][]);
+}
+~~~
 ### Interface `IPainelControle`
+Controle ser capaz de atualizar a interface gráfica a cada iteração
+~~~java
+public interface IPainelControle 
+{
+	public void atualizarPainel();
+	public void mostrarPainel();
+	public void atualizarImagemCircuitoPainel();
+	public void atualizarImagemPilotoPainel();
+	public void addPlayActionListener(ActionListener I);
+	public void addPlayKeyListener(KeyListener I);
+	public void atualizarScore(int valor);
+	public void atualizarStatus(String mensagem);
+}
+~~~
 
 ## Plano de Exceções
