@@ -305,3 +305,13 @@ Método | Objetivo
 `atualizarStatus` | Atualiza o status do jogo mostrado no painel
 
 ## Plano de Exceções
+
+![Hierarquia Exceções](assets/Excecoes.jpg)
+
+## Descrição das classes de exceção
+
+Classe | Descrição
+----- | -----
+Excecoes | Engloba todas as exceções de divisões não aceitas.
+LimiteCircuito | Indica que há acesso a posoções inválidas da matriz
+ArquivoImagem | Indica que está recebendo um arquivo de imagem inválido
